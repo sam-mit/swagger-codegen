@@ -12,7 +12,7 @@ docker run --rm -it \
         -e GEN_DIR=/gen \
         -e MAVEN_CONFIG=/var/maven/.m2 \
         -u "$(id -u):$(id -g)" \
-        -v "${PWD}:/gen" \
-        -v "${maven_cache_repo}:/var/maven/.m2/repository" \
+        -v "${PWD}:/gen":z \
+        -v "${maven_cache_repo}:/var/maven/.m2/repository":z \
         --entrypoint /gen/docker-entrypoint.sh \
         maven:3-jdk-7 "$@"
